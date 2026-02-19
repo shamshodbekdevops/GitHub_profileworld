@@ -35,14 +35,14 @@ export function FilterBar({ languages }: FilterBarProps) {
         value={sortBy}
         onChange={(e) => setSortBy(e.target.value as 'stars' | 'activity' | 'name')}
       >
-        <option value="activity">Sort: Activity</option>
-        <option value="stars">Sort: Stars</option>
-        <option value="name">Sort: Name</option>
+        <option value="activity">Sort buildings: Activity</option>
+        <option value="stars">Sort buildings: Stars</option>
+        <option value="name">Sort buildings: Name</option>
       </select>
 
       <label className="inline-flex items-center gap-2 rounded-lg bg-white/5 px-2 py-1 text-sm">
         <input type="checkbox" checked={forestMode} onChange={(e) => setForestMode(e.target.checked)} />
-        Forest density
+        Trees = commits
       </label>
 
       <label className="inline-flex items-center gap-2 rounded-lg bg-white/5 px-2 py-1 text-sm">

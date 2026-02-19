@@ -157,7 +157,7 @@ function RoadLoops() {
       {loops.map((radius) => (
         <mesh key={radius} rotation={[-Math.PI / 2, 0, 0]} position={[0, 0.03, 0]}>
           <torusGeometry args={[radius, 0.06, 6, 96]} />
-          <meshStandardMaterial color="#34312A" roughness={0.95} metalness={0.05} />
+          <meshStandardMaterial color="#4A4338" roughness={0.9} metalness={0.08} emissive="#27231D" emissiveIntensity={0.25} />
         </mesh>
       ))}
     </group>
@@ -175,6 +175,12 @@ interface WorldCanvasProps {
 export function WorldCanvas({ repos, selectedRepoId, onSelectRepo, forestMode, reducedMotion }: WorldCanvasProps) {
   const selectedRepo = repos.find((repo) => repo.repo_id === selectedRepoId);
 
+  useEffect(() => {
+    return () => {
+      document.body.style.cursor = 'default';
+    };
+  }, []);
+
   return (
     <div className="h-[60vh] min-h-[420px] w-full overflow-hidden rounded-2xl border border-white/10 bg-bg800/40 md:h-[74vh]">
       <Canvas shadows dpr={[1, 1.6]}>
@@ -184,6 +190,7 @@ export function WorldCanvas({ repos, selectedRepoId, onSelectRepo, forestMode, r
         <hemisphereLight args={['#6F7F73', '#1A1A18', 0.45]} />
         <directionalLight position={[14, 18, 6]} intensity={1.15} castShadow />
         <pointLight position={[0, 16, 0]} intensity={0.3} color="#F2C46D" />
+        <pointLight position={[0, 3, 0]} intensity={0.2} color="#8CBF8E" />
 
         <mesh rotation={[-Math.PI / 2, 0, 0]} receiveShadow>
           <planeGeometry args={[220, 220]} />
@@ -207,6 +214,12 @@ export function WorldCanvas({ repos, selectedRepoId, onSelectRepo, forestMode, r
                 onClick={(event) => {
                   event.stopPropagation();
                   onSelectRepo(repo);
+                }}
+                onPointerOver={() => {
+                  document.body.style.cursor = 'pointer';
+                }}
+                onPointerOut={() => {
+                  document.body.style.cursor = 'default';
                 }}
               >
                 <boxGeometry args={[1.1, height, 1.1]} />

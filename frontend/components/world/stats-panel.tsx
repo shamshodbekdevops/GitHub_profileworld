@@ -2,6 +2,8 @@ import { WorldData } from '@/lib/types';
 import { Card } from '@/components/ui/card';
 
 export function StatsPanel({ world }: { world: WorldData }) {
+  const topLanguages = world.languages.slice(0, 3);
+
   return (
     <Card className="space-y-3">
       <div>
@@ -13,6 +15,20 @@ export function StatsPanel({ world }: { world: WorldData }) {
         <div className="rounded-lg bg-white/5 p-2">Stars: {world.totals.total_stars}</div>
         <div className="rounded-lg bg-white/5 p-2">Followers: {world.followers}</div>
         <div className="rounded-lg bg-white/5 p-2">Following: {world.following}</div>
+      </div>
+      <div className="space-y-2">
+        <p className="text-xs uppercase tracking-[0.14em] text-text300">Top Languages</p>
+        <div className="flex flex-wrap gap-2 text-xs">
+          {topLanguages.length ? (
+            topLanguages.map((item) => (
+              <span key={item.language} className="rounded-full border border-white/15 bg-white/5 px-2.5 py-1">
+                {item.language} {item.percent}%
+              </span>
+            ))
+          ) : (
+            <span className="text-text300">No language data</span>
+          )}
+        </div>
       </div>
     </Card>
   );
