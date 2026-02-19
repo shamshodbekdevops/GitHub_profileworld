@@ -22,7 +22,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${heading.variable} ${body.variable} ${mono.variable}`}>
       <body className="bg-bg900 text-text100 antialiased">
-        <div className="fixed inset-0 -z-20 bg-[radial-gradient(circle_at_15%_20%,rgba(62,231,255,.16),transparent_35%),radial-gradient(circle_at_80%_10%,rgba(59,130,246,.22),transparent_35%),linear-gradient(160deg,#070B14,#0D1322_45%,#070B14)]" />
+        <div className="fixed inset-0 -z-20 bg-[radial-gradient(circle_at_15%_20%,rgba(93,214,160,.16),transparent_35%),radial-gradient(circle_at_82%_12%,rgba(242,196,109,.18),transparent_38%),linear-gradient(160deg,#101215,#171B20_45%,#101215)]" />
         <div className="fixed inset-0 -z-10 bg-[linear-gradient(rgba(255,255,255,0.04)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.04)_1px,transparent_1px)] bg-[size:72px_72px] opacity-20" />
         <Providers>{children}</Providers>
       </body>

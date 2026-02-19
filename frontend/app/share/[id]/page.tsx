@@ -15,19 +15,19 @@ function downloadPoster(username: string, totals: { repo_count: number; total_st
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
   <defs>
     <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
-      <stop offset="0%" stop-color="#070B14" />
-      <stop offset="50%" stop-color="#0D1322" />
-      <stop offset="100%" stop-color="#071827" />
+      <stop offset="0%" stop-color="#101215" />
+      <stop offset="50%" stop-color="#171B20" />
+      <stop offset="100%" stop-color="#1D211D" />
     </linearGradient>
   </defs>
   <rect width="1200" height="630" fill="url(#bg)" />
-  <text x="72" y="120" fill="#3EE7FF" font-size="28" font-family="Manrope">GitHub Profile World</text>
-  <text x="72" y="205" fill="#EAF2FF" font-size="64" font-weight="700" font-family="Space Grotesk">@${username}</text>
-  <text x="72" y="270" fill="#A9B7D4" font-size="28" font-family="Manrope">Portfolio Snapshot</text>
-  <text x="72" y="370" fill="#EAF2FF" font-size="34" font-family="JetBrains Mono">Repos: ${totals.repo_count}</text>
-  <text x="72" y="420" fill="#EAF2FF" font-size="34" font-family="JetBrains Mono">Stars: ${totals.total_stars}</text>
-  <text x="72" y="470" fill="#EAF2FF" font-size="34" font-family="JetBrains Mono">Forks: ${totals.total_forks}</text>
-  <text x="72" y="520" fill="#EAF2FF" font-size="34" font-family="JetBrains Mono">Watchers: ${totals.total_watchers}</text>
+  <text x="72" y="120" fill="#F2C46D" font-size="28" font-family="Manrope">GitHub Profile World</text>
+  <text x="72" y="205" fill="#F4F1EA" font-size="64" font-weight="700" font-family="Space Grotesk">@${username}</text>
+  <text x="72" y="270" fill="#B7B0A2" font-size="28" font-family="Manrope">Portfolio Snapshot</text>
+  <text x="72" y="370" fill="#F4F1EA" font-size="34" font-family="JetBrains Mono">Repos: ${totals.repo_count}</text>
+  <text x="72" y="420" fill="#F4F1EA" font-size="34" font-family="JetBrains Mono">Stars: ${totals.total_stars}</text>
+  <text x="72" y="470" fill="#F4F1EA" font-size="34" font-family="JetBrains Mono">Forks: ${totals.total_forks}</text>
+  <text x="72" y="520" fill="#F4F1EA" font-size="34" font-family="JetBrains Mono">Watchers: ${totals.total_watchers}</text>
 </svg>`;
 
   const blob = new Blob([svg], { type: 'image/svg+xml;charset=utf-8' });
@@ -69,7 +69,7 @@ export default function SharePage() {
         <Card className="w-full p-6">
           <h1 className="mb-2 text-2xl font-bold">Share link unavailable</h1>
           <p className="text-sm text-danger">{(error as Error)?.message || 'Link expired or disabled'}</p>
-          <Link href="/generate" className="mt-4 inline-block text-cyan">
+          <Link href="/generate" className="mt-4 inline-block text-mint">
             Generate a new world
           </Link>
         </Card>
@@ -80,7 +80,7 @@ export default function SharePage() {
   return (
     <main className="mx-auto flex min-h-screen w-full max-w-4xl flex-col gap-4 px-6 py-10">
       <Card className="p-6">
-        <p className="mb-2 text-xs uppercase tracking-[0.16em] text-cyan">Public World</p>
+        <p className="mb-2 text-xs uppercase tracking-[0.16em] text-gold">Public World</p>
         <h1 className="text-3xl font-bold">@{data.username}&apos;s GitHub Profile World</h1>
         <p className="mt-2 text-sm text-text300">Read-only recruiter view with project highlights and activity signals.</p>
       </Card>

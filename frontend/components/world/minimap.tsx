@@ -21,7 +21,7 @@ export function Minimap({ repos, selectedRepoId, onSelectRepo }: MinimapProps) {
             <button
               key={repo.repo_id}
               onClick={() => onSelectRepo(repo.repo_id)}
-              className={`absolute h-2.5 w-2.5 -translate-x-1/2 -translate-y-1/2 rounded-full ${active ? 'bg-cyan shadow-[0_0_10px_#3EE7FF]' : 'bg-text300/70'}`}
+              className={`absolute h-2.5 w-2.5 -translate-x-1/2 -translate-y-1/2 rounded-full ${active ? 'bg-gold shadow-[0_0_10px_#F2C46D]' : 'bg-text300/70'}`}
               style={{ left: `${x}%`, top: `${y}%` }}
               aria-label={`Focus ${repo.name}`}
             />

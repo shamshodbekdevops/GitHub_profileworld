@@ -3,7 +3,7 @@
 import { useMutation } from '@tanstack/react-query';
 import Link from 'next/link';
 import { useRouter, useSearchParams } from 'next/navigation';
-import { FormEvent, useMemo, useState } from 'react';
+import { FormEvent, Suspense, useMemo, useState } from 'react';
 
 import { generateWorld } from '@/lib/api';
 import { Button } from '@/components/ui/button';
@@ -30,7 +30,7 @@ function parseInput(value: string) {
   return { valid: true, payload: { username: trimmed.replace('@', '') } };
 }
 
-export default function GeneratePage() {
+function GeneratePageContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const sample = searchParams.get('sample') || '';
@@ -101,5 +101,24 @@ export default function GeneratePage() {
         </form>
       </Card>
     </main>
+  );
+}
+
+export default function GeneratePage() {
+  return (
+    <Suspense
+      fallback={
+        <main className="mx-auto flex min-h-screen w-full max-w-2xl flex-col px-6 pb-12 pt-10">
+          <div className="mb-8 h-5 w-36 rounded bg-white/10" />
+          <Card className="space-y-3 p-6 md:p-8">
+            <div className="h-8 w-72 rounded bg-white/10" />
+            <div className="h-4 w-96 rounded bg-white/10" />
+            <div className="h-12 w-full rounded bg-white/10" />
+          </Card>
+        </main>
+      }
+    >
+      <GeneratePageContent />
+    </Suspense>
   );
 }

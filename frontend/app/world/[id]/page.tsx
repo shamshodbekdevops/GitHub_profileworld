@@ -76,7 +76,7 @@ export default function WorldPage() {
         <Card className="w-full p-6">
           <h1 className="mb-2 text-2xl font-bold">Unable to load world</h1>
           <p className="text-sm text-danger">{(error as Error)?.message || 'Unknown error'}</p>
-          <Link href="/generate" className="mt-4 inline-block text-cyan">
+          <Link href="/generate" className="mt-4 inline-block text-mint">
             Generate another world
           </Link>
         </Card>

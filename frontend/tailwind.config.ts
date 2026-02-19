@@ -9,18 +9,19 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        bg900: '#070B14',
-        bg800: '#0D1322',
-        text100: '#EAF2FF',
-        text300: '#A9B7D4',
-        cyan: '#3EE7FF',
-        blue: '#3B82F6',
-        lime: '#9DFF6B',
-        amber: '#F7C948',
+        bg900: '#101215',
+        bg800: '#171B20',
+        text100: '#F4F1EA',
+        text300: '#B7B0A2',
+        mint: '#5DD6A0',
+        gold: '#F2C46D',
+        moss: '#7DBB6F',
+        clay: '#CF7A58',
+        sand: '#DCC9A3',
         danger: '#FF5D73',
       },
       boxShadow: {
-        glow: '0 0 60px rgba(62, 231, 255, 0.2)',
+        glow: '0 0 60px rgba(93, 214, 160, 0.2)',
       },
       backdropBlur: {
         panel: '18px',

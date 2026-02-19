@@ -31,7 +31,7 @@ h6 {
 }
 
 .glass {
-  background: rgba(20, 30, 52, 0.58);
+  background: rgba(27, 31, 37, 0.72);
   border: 1px solid rgba(255, 255, 255, 0.12);
   backdrop-filter: blur(18px);
 }

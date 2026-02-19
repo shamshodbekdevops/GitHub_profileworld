@@ -15,7 +15,7 @@ export function FilterBar({ languages }: FilterBarProps) {
     <div className="glass flex flex-wrap items-center gap-2 rounded-2xl p-3">
       <div className="mr-2 text-xs uppercase tracking-[0.14em] text-text300">Filters</div>
       <button
-        className={`rounded-lg px-3 py-1.5 text-sm ${languageFilter === 'All' ? 'bg-cyan text-bg900' : 'bg-white/10 text-text100'}`}
+        className={`rounded-lg px-3 py-1.5 text-sm ${languageFilter === 'All' ? 'bg-mint text-bg900' : 'bg-white/10 text-text100'}`}
         onClick={() => setLanguageFilter('All')}
       >
         All
@@ -23,7 +23,7 @@ export function FilterBar({ languages }: FilterBarProps) {
       {languages.slice(0, 8).map((lang) => (
         <button
           key={lang.language}
-          className={`rounded-lg px-3 py-1.5 text-sm ${languageFilter === lang.language ? 'bg-cyan text-bg900' : 'bg-white/10 text-text100'}`}
+          className={`rounded-lg px-3 py-1.5 text-sm ${languageFilter === lang.language ? 'bg-mint text-bg900' : 'bg-white/10 text-text100'}`}
           onClick={() => setLanguageFilter(lang.language)}
         >
           {lang.language}

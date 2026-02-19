@@ -20,7 +20,7 @@ export default function LandingPage() {
 
       <section className="grid gap-10 md:grid-cols-2 md:items-center">
         <div className="space-y-6">
-          <p className="inline-flex rounded-full border border-cyan/40 bg-cyan/10 px-4 py-1 text-xs font-semibold uppercase tracking-[0.16em] text-cyan">
+          <p className="inline-flex rounded-full border border-gold/40 bg-gold/10 px-4 py-1 text-xs font-semibold uppercase tracking-[0.16em] text-gold">
             Portfolio-grade GitHub storytelling
           </p>
           <h1 className="text-4xl font-bold leading-tight md:text-6xl">

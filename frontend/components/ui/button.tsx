@@ -3,8 +3,8 @@ import { ButtonHTMLAttributes } from 'react';
 import { cn } from '@/lib/utils';
 
 const variantClasses = {
-  primary: 'bg-cyan text-bg900 hover:brightness-110 shadow-glow',
-  secondary: 'bg-blue/20 text-text100 border border-blue/60 hover:bg-blue/30',
+  primary: 'bg-mint text-bg900 hover:brightness-110 shadow-glow',
+  secondary: 'bg-gold/15 text-text100 border border-gold/45 hover:bg-gold/25',
   ghost: 'bg-transparent text-text100 hover:bg-white/10',
 };
 
