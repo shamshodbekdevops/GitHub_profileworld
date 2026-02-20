@@ -4,6 +4,10 @@
 
 :root {
   color-scheme: dark;
+  --surface-1: rgba(24, 30, 42, 0.78);
+  --surface-2: rgba(29, 37, 52, 0.62);
+  --border-soft: rgba(255, 255, 255, 0.12);
+  --shadow-soft: 0 10px 40px rgba(0, 0, 0, 0.35);
 }
 
 * {
@@ -31,9 +35,52 @@ h6 {
 }
 
 .glass {
-  background: rgba(27, 31, 37, 0.72);
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: var(--surface-1);
+  border: 1px solid var(--border-soft);
   backdrop-filter: blur(18px);
+  box-shadow: var(--shadow-soft);
+}
+
+.surface {
+  background: var(--surface-2);
+  border: 1px solid var(--border-soft);
+  box-shadow: var(--shadow-soft);
+}
+
+.hover-lift {
+  transition: transform 220ms cubic-bezier(0.22, 1, 0.36, 1), box-shadow 220ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.hover-lift:hover {
+  transform: translateY(-2px);
+}
+
+.fade-in {
+  animation: fadeIn 420ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.stagger-in {
+  animation: staggerIn 520ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes staggerIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

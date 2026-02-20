@@ -3,7 +3,7 @@
 import { useQuery } from '@tanstack/react-query';
 import Link from 'next/link';
 import { useParams } from 'next/navigation';
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
@@ -15,19 +15,19 @@ function downloadPoster(username: string, totals: { repo_count: number; total_st
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
   <defs>
     <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
-      <stop offset="0%" stop-color="#101215" />
-      <stop offset="50%" stop-color="#171B20" />
-      <stop offset="100%" stop-color="#1D211D" />
+      <stop offset="0%" stop-color="#0E131F" />
+      <stop offset="50%" stop-color="#181F31" />
+      <stop offset="100%" stop-color="#10181D" />
     </linearGradient>
   </defs>
   <rect width="1200" height="630" fill="url(#bg)" />
-  <text x="72" y="120" fill="#F2C46D" font-size="28" font-family="Manrope">GitHub Profile World</text>
-  <text x="72" y="205" fill="#F4F1EA" font-size="64" font-weight="700" font-family="Space Grotesk">@${username}</text>
-  <text x="72" y="270" fill="#B7B0A2" font-size="28" font-family="Manrope">Portfolio Snapshot</text>
-  <text x="72" y="370" fill="#F4F1EA" font-size="34" font-family="JetBrains Mono">Repos: ${totals.repo_count}</text>
-  <text x="72" y="420" fill="#F4F1EA" font-size="34" font-family="JetBrains Mono">Stars: ${totals.total_stars}</text>
-  <text x="72" y="470" fill="#F4F1EA" font-size="34" font-family="JetBrains Mono">Forks: ${totals.total_forks}</text>
-  <text x="72" y="520" fill="#F4F1EA" font-size="34" font-family="JetBrains Mono">Watchers: ${totals.total_watchers}</text>
+  <text x="72" y="106" fill="#F2C46D" font-size="26" font-family="Manrope">GitHub Profile World</text>
+  <text x="72" y="190" fill="#F4F1EA" font-size="64" font-weight="700" font-family="Space Grotesk">@${username}</text>
+  <text x="72" y="246" fill="#B7B0A2" font-size="24" font-family="Manrope">Recruiter-ready public profile snapshot</text>
+  <text x="72" y="340" fill="#F4F1EA" font-size="32" font-family="JetBrains Mono">Repos: ${totals.repo_count}</text>
+  <text x="72" y="390" fill="#F4F1EA" font-size="32" font-family="JetBrains Mono">Stars: ${totals.total_stars}</text>
+  <text x="72" y="440" fill="#F4F1EA" font-size="32" font-family="JetBrains Mono">Forks: ${totals.total_forks}</text>
+  <text x="72" y="490" fill="#F4F1EA" font-size="32" font-family="JetBrains Mono">Watchers: ${totals.total_watchers}</text>
 </svg>`;
 
   const blob = new Blob([svg], { type: 'image/svg+xml;charset=utf-8' });
@@ -48,6 +48,11 @@ export default function SharePage() {
     queryFn: () => getShareWorld(id),
   });
 
+  const topRepos = useMemo(
+    () => data?.repos.slice().sort((a, b) => b.stars - a.stars).slice(0, 6) ?? [],
+    [data],
+  );
+
   const copyLink = async () => {
     await navigator.clipboard.writeText(window.location.href);
     setCopied(true);
@@ -56,8 +61,8 @@ export default function SharePage() {
 
   if (isLoading) {
     return (
-      <main className="mx-auto flex min-h-screen w-full max-w-4xl flex-col gap-4 px-6 py-10">
-        <Skeleton className="h-12 w-full" />
+      <main className="mx-auto flex min-h-screen w-full max-w-5xl flex-col gap-4 px-6 py-10">
+        <Skeleton className="h-28 w-full" />
         <Skeleton className="h-72 w-full" />
       </main>
     );
@@ -78,31 +83,37 @@ export default function SharePage() {
   }
 
   return (
-    <main className="mx-auto flex min-h-screen w-full max-w-4xl flex-col gap-4 px-6 py-10">
-      <Card className="p-6">
-        <p className="mb-2 text-xs uppercase tracking-[0.16em] text-gold">Public World</p>
-        <h1 className="text-3xl font-bold">@{data.username}&apos;s GitHub Profile World</h1>
-        <p className="mt-2 text-sm text-text300">Read-only recruiter view with project highlights and activity signals.</p>
+    <main className="mx-auto flex min-h-screen w-full max-w-5xl flex-col gap-4 px-6 py-10">
+      <Card className="space-y-3 p-6">
+        <p className="text-xs uppercase tracking-[0.16em] text-gold">Public Profile World</p>
+        <h1 className="text-3xl font-bold">@{data.username}&apos;s GitHub World Snapshot</h1>
+        <p className="max-w-3xl text-sm text-text300">
+          This is a read-only world view optimized for portfolio reviews and recruiter screening.
+        </p>
       </Card>
 
       <Card className="p-6">
         <div className="grid gap-3 sm:grid-cols-4">
-          <div className="rounded-xl bg-white/5 p-3">Repos: {data.totals.repo_count}</div>
-          <div className="rounded-xl bg-white/5 p-3">Stars: {data.totals.total_stars}</div>
-          <div className="rounded-xl bg-white/5 p-3">Followers: {data.followers}</div>
-          <div className="rounded-xl bg-white/5 p-3">Following: {data.following}</div>
+          <div className="rounded-xl border border-white/10 bg-white/5 p-3">Repos: {data.totals.repo_count}</div>
+          <div className="rounded-xl border border-white/10 bg-white/5 p-3">Stars: {data.totals.total_stars}</div>
+          <div className="rounded-xl border border-white/10 bg-white/5 p-3">Followers: {data.followers}</div>
+          <div className="rounded-xl border border-white/10 bg-white/5 p-3">Following: {data.following}</div>
         </div>
       </Card>
 
       <Card className="p-6">
-        <h2 className="mb-3 text-xl font-semibold">Top repositories</h2>
+        <h2 className="mb-3 text-xl font-semibold">Top Repositories by Stars</h2>
         <div className="space-y-2">
-          {data.repos.slice(0, 6).map((repo) => (
-            <div key={repo.repo_id} className="flex items-center justify-between rounded-lg bg-white/5 px-3 py-2">
-              <span>{repo.name}</span>
-              <span className="text-sm text-text300">{repo.stars} stars</span>
-            </div>
-          ))}
+          {topRepos.length ? (
+            topRepos.map((repo) => (
+              <div key={repo.repo_id} className="flex items-center justify-between rounded-lg border border-white/10 bg-white/5 px-3 py-2">
+                <span>{repo.name}</span>
+                <span className="text-sm text-text300">{repo.stars} stars</span>
+              </div>
+            ))
+          ) : (
+            <p className="text-sm text-text300">No repositories available in this shared world.</p>
+          )}
         </div>
       </Card>
 
@@ -112,9 +123,10 @@ export default function SharePage() {
           Download Poster
         </Button>
         <Link href={`/world/${data.id}`}>
-          <Button variant="ghost">Open Full World</Button>
+          <Button variant="ghost">Open Full Interactive View</Button>
         </Link>
       </div>
     </main>
   );
 }
+

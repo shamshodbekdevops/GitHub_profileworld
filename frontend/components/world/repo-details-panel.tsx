@@ -26,6 +26,7 @@ export function RepoDetailsPanel({ repo }: { repo?: RepoSnapshot }) {
   return (
     <Card className="space-y-3">
       <div>
+        <p className="text-xs uppercase tracking-[0.14em] text-gold">Repository Details</p>
         <h3 className="text-lg font-semibold">{repo.name}</h3>
         <p className="text-xs text-text300">{repo.full_name}</p>
       </div>
@@ -44,7 +45,7 @@ export function RepoDetailsPanel({ repo }: { repo?: RepoSnapshot }) {
       </div>
       <Link href={repo.html_url} target="_blank">
         <Button variant="secondary" className="w-full">
-          Open Repository
+          Open on GitHub
         </Button>
       </Link>
     </Card>

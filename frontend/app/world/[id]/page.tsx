@@ -116,7 +116,9 @@ export default function WorldPage() {
       <div className="flex flex-wrap items-center gap-3">
         <div>
           <h1 className="text-2xl font-bold">{data.username}&apos;s Profile World</h1>
-          <p className="text-sm text-text300">Each repository is a building. Explore activity, stars, and commit intensity visually.</p>
+          <p className="text-sm text-text300">
+            Interactive 3D portfolio map. Each building represents a repository with activity and popularity signals.
+          </p>
         </div>
         <div className="ml-auto flex gap-2">
           <input
@@ -126,7 +128,7 @@ export default function WorldPage() {
             placeholder="Search repository name"
           />
           <Link href={`/share/${data.id}`}>
-            <Button variant="secondary">Share</Button>
+            <Button variant="secondary">Share Profile</Button>
           </Link>
         </div>
       </div>

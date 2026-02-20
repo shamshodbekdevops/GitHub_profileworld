@@ -7,6 +7,7 @@ export function StatsPanel({ world }: { world: WorldData }) {
   return (
     <Card className="space-y-3">
       <div>
+        <p className="text-xs uppercase tracking-[0.14em] text-gold">Profile Snapshot</p>
         <h3 className="text-lg font-semibold">@{world.username}</h3>
         <p className="text-xs text-text300">Generated {new Date(world.generated_at).toLocaleString()}</p>
       </div>
