@@ -9,19 +9,22 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        bg900: '#101215',
-        bg800: '#171B20',
-        text100: '#F4F1EA',
-        text300: '#B7B0A2',
-        mint: '#5DD6A0',
-        gold: '#F2C46D',
-        moss: '#7DBB6F',
-        clay: '#CF7A58',
-        sand: '#DCC9A3',
-        danger: '#FF5D73',
+        bg900: '#0A0A0A', // Deep dark background
+        bg800: '#111111', // Slightly lighter dark
+        bg700: '#1A1A1A', // Card background
+        text100: '#EDEDED', // Primary text
+        text300: '#A1A1AA', // Secondary text
+        mint: '#00E59B', // Neon accent (primary)
+        gold: '#F5A623', // Accent 2
+        moss: '#34D399', // Accent 3
+        clay: '#F87171', // Accent 4
+        sand: '#FCD34D', // Accent 5
+        danger: '#EF4444', // Error
+        accent: '#3B82F6', // Blue accent
       },
       boxShadow: {
-        glow: '0 0 60px rgba(93, 214, 160, 0.2)',
+        glow: '0 0 40px rgba(0, 229, 155, 0.15)',
+        'glow-strong': '0 0 60px rgba(0, 229, 155, 0.3)',
       },
       backdropBlur: {
         panel: '18px',
