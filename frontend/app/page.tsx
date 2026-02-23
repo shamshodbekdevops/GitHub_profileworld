@@ -45,34 +45,52 @@ export default function LandingPage() {
         </nav>
       </header>
 
-      <section className="grid gap-10 md:grid-cols-[1.1fr_1fr] md:items-center">
-        <div className="space-y-6 fade-in">
-          <p className="inline-flex rounded-full border border-gold/40 bg-gold/10 px-4 py-1 text-xs font-semibold uppercase tracking-[0.16em] text-gold">
-            Premium GitHub portfolio experience
+      <section className="grid gap-10 md:grid-cols-[1.1fr_1fr] md:items-center min-h-[80vh]">
+        <div className="space-y-8 fade-in">
+          <p className="inline-flex rounded-full border border-mint/40 bg-mint/10 px-4 py-1.5 text-xs font-bold uppercase tracking-[0.2em] text-mint shadow-glow">
+            Premium Developer Portfolio
           </p>
-          <h1 className="text-4xl font-bold leading-tight md:text-6xl">
-            Turn GitHub activity into a world recruiters can understand in seconds.
+          <h1 className="text-5xl font-extrabold leading-[1.1] tracking-tight md:text-7xl bg-gradient-to-r from-white via-text100 to-text300 bg-clip-text text-transparent">
+            Turn your GitHub into a living world.
           </h1>
-          <p className="max-w-2xl text-base text-text300 md:text-lg">
-            GitHub Profile World converts repositories, commits, stars, and languages into a smooth 3D city. It feels modern
-            and game-like, while staying professional for hiring conversations.
+          <p className="max-w-2xl text-lg text-text300 md:text-xl leading-relaxed">
+            Transform your repositories, commits, and activity into an interactive, futuristic 3D city. 
+            Showcase your developer journey in a way that stands out and gets noticed.
           </p>
-          <div className="flex flex-wrap gap-3">
-            <Link href="/generate">
-              <Button>Generate My World</Button>
+          
+          <div className="flex flex-col sm:flex-row gap-4 pt-4">
+            <Link href="/generate" className="w-full sm:w-auto">
+              <Button className="w-full sm:w-auto text-lg px-8 py-4 bg-mint text-bg900 hover:bg-white transition-colors shadow-glow-strong">
+                Generate My World
+              </Button>
             </Link>
-            <Link href="/generate?sample=torvalds">
-              <Button variant="secondary">Try sample user</Button>
+            <Link href="/generate?sample=torvalds" className="w-full sm:w-auto">
+              <Button variant="ghost" className="w-full sm:w-auto text-lg px-8 py-4 border-white/20 hover:bg-white/5">
+                View Live Demo
+              </Button>
             </Link>
           </div>
-          <div className="flex flex-wrap items-center gap-2 text-xs text-text300">
-            <span className="rounded-full border border-white/15 px-3 py-1">Fast first load</span>
-            <span className="rounded-full border border-white/15 px-3 py-1">Share-ready links</span>
-            <span className="rounded-full border border-white/15 px-3 py-1">Recruiter friendly</span>
+          
+          <div className="flex flex-wrap items-center gap-4 text-sm text-text300 pt-4 font-mono-tech">
+            <div className="flex items-center gap-2">
+              <div className="w-2 h-2 rounded-full bg-mint animate-pulse" />
+              <span>Real-time data</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <div className="w-2 h-2 rounded-full bg-accent" />
+              <span>Highly shareable</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <div className="w-2 h-2 rounded-full bg-gold" />
+              <span>3D Interactive</span>
+            </div>
           </div>
         </div>
 
-        <HeroPreview />
+        <div className="relative w-full aspect-square max-w-[600px] mx-auto">
+          <div className="absolute inset-0 bg-gradient-to-tr from-mint/20 to-accent/20 rounded-full blur-3xl opacity-50 animate-pulse" />
+          <HeroPreview />
+        </div>
       </section>
 
       <section id="mapping" className="stagger-in">
