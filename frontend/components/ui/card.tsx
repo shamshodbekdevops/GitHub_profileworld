@@ -6,7 +6,7 @@ export function Card({ children, className }: { children: ReactNode; className?:
   return (
     <div
       className={cn(
-        'surface rounded-2xl p-4 backdrop-blur-panel',
+        'surface rounded-3xl p-6 shadow-glow border border-mint/10 backdrop-blur-panel transition-all duration-300',
         className,
       )}
     >

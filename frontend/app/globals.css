@@ -4,10 +4,12 @@
 
 :root {
   color-scheme: dark;
-  --surface-1: rgba(24, 30, 42, 0.78);
-  --surface-2: rgba(29, 37, 52, 0.62);
-  --border-soft: rgba(255, 255, 255, 0.12);
-  --shadow-soft: 0 10px 40px rgba(0, 0, 0, 0.35);
+  --surface-1: rgba(24, 30, 42, 0.85);
+  --surface-2: rgba(29, 37, 52, 0.70);
+  --border-soft: rgba(255, 255, 255, 0.14);
+  --shadow-soft: 0 10px 40px rgba(93, 214, 160, 0.08), 0 2px 8px rgba(0,0,0,0.18);
+  --shadow-glow: 0 0 60px rgba(93, 214, 160, 0.18);
+  --blur-panel: 24px;
 }
 
 * {
@@ -19,6 +21,10 @@ body {
   margin: 0;
   min-height: 100%;
   font-family: var(--font-body), sans-serif;
+  font-size: 17px;
+  letter-spacing: 0.01em;
+  background: transparent;
+  transition: background 0.3s, color 0.3s;
 }
 
 h1,
@@ -36,31 +42,37 @@ h6 {
 
 .glass {
   background: var(--surface-1);
-  border: 1px solid var(--border-soft);
-  backdrop-filter: blur(18px);
+  border: 1.5px solid var(--border-soft);
+  backdrop-filter: blur(var(--blur-panel));
   box-shadow: var(--shadow-soft);
+  transition: background 0.3s, border 0.3s;
 }
 
 .surface {
   background: var(--surface-2);
-  border: 1px solid var(--border-soft);
+  border: 1.5px solid var(--border-soft);
   box-shadow: var(--shadow-soft);
+  transition: background 0.3s, border 0.3s;
 }
 
 .hover-lift {
   transition: transform 220ms cubic-bezier(0.22, 1, 0.36, 1), box-shadow 220ms cubic-bezier(0.22, 1, 0.36, 1);
+  box-shadow: var(--shadow-glow);
 }
 
 .hover-lift:hover {
-  transform: translateY(-2px);
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 0 80px rgba(93,214,160,0.22);
 }
 
 .fade-in {
   animation: fadeIn 420ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  transition: opacity 0.3s;
 }
 
 .stagger-in {
   animation: staggerIn 520ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  transition: transform 0.3s, opacity 0.3s;
 }
 
 @keyframes fadeIn {

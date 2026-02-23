@@ -16,7 +16,7 @@ export function Button({ className, variant = 'primary', ...props }: Props) {
   return (
     <button
       className={cn(
-        'rounded-xl px-4 py-2 text-sm font-semibold transition duration-200 ease-out hover-lift disabled:cursor-not-allowed disabled:opacity-60',
+        'rounded-2xl px-5 py-3 text-base font-semibold shadow-glow transition duration-200 ease-out hover-lift focus:outline-none focus:ring-2 focus:ring-mint/40 disabled:cursor-not-allowed disabled:opacity-60',
         variantClasses[variant],
         className,
       )}
