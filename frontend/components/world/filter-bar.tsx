@@ -12,10 +12,10 @@ export function FilterBar({ languages }: FilterBarProps) {
     useWorldUiStore();
 
   return (
-    <div className="glass flex flex-wrap items-center gap-2 rounded-2xl p-3">
-      <div className="mr-2 text-xs uppercase tracking-[0.14em] text-text300">Filters</div>
+    <div className="glass flex flex-wrap items-center gap-2 rounded-2xl px-4 py-3 border border-white/8 shadow-glow">
+      <div className="mr-2 text-xs font-bold uppercase tracking-[0.2em] text-mint">Filters</div>
       <button
-        className={`rounded-lg px-3 py-1.5 text-sm ${languageFilter === 'All' ? 'bg-mint text-bg900' : 'bg-white/10 text-text100'}`}
+        className={`rounded-xl px-4 py-1.5 text-sm font-semibold transition-all duration-150 ${languageFilter === 'All' ? 'bg-mint text-bg900 shadow-glow' : 'bg-white/8 text-text300 hover:bg-white/15 hover:text-text100 border border-white/10'}`}
         onClick={() => setLanguageFilter('All')}
       >
         All
@@ -23,7 +23,7 @@ export function FilterBar({ languages }: FilterBarProps) {
       {languages.slice(0, 8).map((lang) => (
         <button
           key={lang.language}
-          className={`rounded-lg px-3 py-1.5 text-sm ${languageFilter === lang.language ? 'bg-mint text-bg900' : 'bg-white/10 text-text100'}`}
+          className={`rounded-xl px-4 py-1.5 text-sm font-semibold transition-all duration-150 ${languageFilter === lang.language ? 'bg-mint text-bg900 shadow-glow' : 'bg-white/8 text-text300 hover:bg-white/15 hover:text-text100 border border-white/10'}`}
           onClick={() => setLanguageFilter(lang.language)}
         >
           {lang.language}
@@ -31,22 +31,22 @@ export function FilterBar({ languages }: FilterBarProps) {
       ))}
 
       <select
-        className="ml-auto rounded-lg border border-white/15 bg-bg800/80 px-3 py-1.5 text-sm"
+        className="ml-auto rounded-xl border border-white/12 bg-bg700/90 px-4 py-1.5 text-sm text-text100 outline-none focus:border-mint/40"
         value={sortBy}
         onChange={(e) => setSortBy(e.target.value as 'stars' | 'activity' | 'name')}
       >
-        <option value="activity">Sort buildings: Activity</option>
-        <option value="stars">Sort buildings: Stars</option>
-        <option value="name">Sort buildings: Name</option>
+        <option value="activity">Activity</option>
+        <option value="stars">Stars</option>
+        <option value="name">Name</option>
       </select>
 
-      <label className="inline-flex items-center gap-2 rounded-lg bg-white/5 px-2 py-1 text-sm">
-        <input type="checkbox" checked={forestMode} onChange={(e) => setForestMode(e.target.checked)} />
+      <label className="inline-flex items-center gap-2 rounded-xl border border-white/8 bg-white/5 px-3 py-1.5 text-sm text-text300 cursor-pointer hover:bg-white/10 transition-colors">
+        <input type="checkbox" checked={forestMode} onChange={(e) => setForestMode(e.target.checked)} className="accent-mint" />
         Trees = commits
       </label>
 
-      <label className="inline-flex items-center gap-2 rounded-lg bg-white/5 px-2 py-1 text-sm">
-        <input type="checkbox" checked={reducedMotion} onChange={(e) => setReducedMotion(e.target.checked)} />
+      <label className="inline-flex items-center gap-2 rounded-xl border border-white/8 bg-white/5 px-3 py-1.5 text-sm text-text300 cursor-pointer hover:bg-white/10 transition-colors">
+        <input type="checkbox" checked={reducedMotion} onChange={(e) => setReducedMotion(e.target.checked)} className="accent-mint" />
         Reduced motion
       </label>
     </div>

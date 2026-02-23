@@ -81,67 +81,80 @@ function GeneratePageContent() {
   };
 
   return (
-    <main className="mx-auto flex min-h-screen w-full max-w-5xl flex-col gap-5 px-6 pb-12 pt-10">
-      <Link href="/" className="w-fit text-sm text-text300 hover:text-text100">
-        Back to landing
+    <main className="mx-auto flex min-h-screen w-full max-w-5xl flex-col gap-8 px-6 pb-16 pt-10">
+      <Link href="/" className="w-fit flex items-center gap-2 text-sm text-text300 hover:text-mint transition-colors group">
+        <span className="group-hover:-translate-x-1 transition-transform">←</span>
+        Back to home
       </Link>
 
-      <section className="grid gap-4 lg:grid-cols-[1.2fr_0.8fr]">
-        <Card className="space-y-6 p-6 md:p-8">
-          <div>
-            <p className="mb-2 text-xs uppercase tracking-[0.14em] text-gold">Generator</p>
-            <h1 className="mb-2 text-3xl font-bold">Generate your GitHub World</h1>
-            <p className="text-sm text-text300">
-              Paste a GitHub profile URL or username. We will fetch public data and build your interactive world city.
+      <section className="grid gap-6 lg:grid-cols-[1.2fr_0.8fr]">
+        <Card className="space-y-8 p-8 md:p-10 border-white/8">
+          <div className="space-y-2">
+            <p className="mb-3 text-xs font-bold uppercase tracking-[0.2em] text-mint">Generator</p>
+            <h1 className="text-3xl font-extrabold tracking-tight md:text-4xl bg-gradient-to-r from-white to-text300 bg-clip-text text-transparent">
+              Generate Your GitHub World
+            </h1>
+            <p className="text-text300 leading-relaxed">
+              Paste a GitHub profile URL or username. We fetch your public data and build an interactive 3D city.
             </p>
           </div>
 
-          <form onSubmit={onSubmit} className="space-y-4">
-            <label className="block text-sm font-medium text-text300" htmlFor="githubInput">
-              GitHub URL or username
-            </label>
-            <Input
-              id="githubInput"
-              value={input}
-              onChange={(e) => setInput(e.target.value)}
-              placeholder="e.g. torvalds or https://github.com/gaearon"
-            />
-            <div className="rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-xs text-text300">
-              Accepted formats: <span className="font-mono-tech">torvalds</span>, <span className="font-mono-tech">@gaearon</span>,{' '}
-              <span className="font-mono-tech">github.com/vercel</span>
+          <form onSubmit={onSubmit} className="space-y-5">
+            <div className="space-y-2">
+              <label className="block text-sm font-semibold text-text100" htmlFor="githubInput">
+                GitHub URL or username
+              </label>
+              <Input
+                id="githubInput"
+                value={input}
+                onChange={(e) => setInput(e.target.value)}
+                placeholder="e.g. torvalds or https://github.com/gaearon"
+                className="text-base"
+              />
+              <div className="rounded-xl border border-white/8 bg-white/4 px-4 py-2.5 text-xs text-text300">
+                Accepted: <span className="font-mono-tech text-mint">torvalds</span>, <span className="font-mono-tech text-mint">@gaearon</span>,{' '}
+                <span className="font-mono-tech text-mint">github.com/vercel</span>
+              </div>
             </div>
 
             {error ? (
-              <div className="rounded-xl border border-danger/35 bg-danger/10 px-3 py-2 text-sm text-danger">{error}</div>
+              <div className="rounded-xl border border-danger/40 bg-danger/10 px-4 py-3 text-sm text-danger flex items-center gap-2">
+                <span>⚠</span> {error}
+              </div>
             ) : null}
 
-            <div className="flex flex-wrap gap-3">
-              <Button type="submit" disabled={mutation.isPending}>
-                {mutation.isPending ? 'Generating world...' : 'Generate World'}
+            <div className="flex flex-wrap gap-3 pt-2">
+              <Button type="submit" disabled={mutation.isPending} className="px-8 py-3 bg-mint text-bg900 hover:bg-white transition-colors shadow-glow text-base font-bold">
+                {mutation.isPending ? (
+                  <span className="flex items-center gap-2">
+                    <span className="w-4 h-4 border-2 border-bg900/30 border-t-bg900 rounded-full animate-spin" />
+                    Generating...
+                  </span>
+                ) : 'Generate World'}
               </Button>
-              <Button type="button" variant="ghost" onClick={() => setInput('torvalds')}>
-                Try sample user
+              <Button type="button" variant="ghost" onClick={() => setInput('torvalds')} className="border-white/15 hover:border-mint/30">
+                Try sample
               </Button>
             </div>
           </form>
         </Card>
 
-        <Card className="space-y-4 p-6">
+        <Card className="space-y-6 p-7 border-white/8">
           <div>
-            <p className="text-xs uppercase tracking-[0.14em] text-gold">What Happens</p>
-            <h2 className="text-xl font-semibold">How your data is visualized</h2>
+            <p className="text-xs font-bold uppercase tracking-[0.2em] text-gold mb-2">Visual Map</p>
+            <h2 className="text-xl font-bold text-text100">How your data becomes a world</h2>
           </div>
-          <div className="space-y-2 text-sm text-text300">
-            {explainers.map((item) => (
-              <p key={item} className="rounded-lg border border-white/10 bg-white/5 px-3 py-2">
-                {item}
-              </p>
+          <div className="space-y-3">
+            {explainers.map((item, i) => (
+              <div key={item} className="flex items-start gap-3 rounded-xl border border-white/8 bg-white/3 px-4 py-3 hover:border-mint/20 transition-colors">
+                <span className="text-mint font-mono-tech font-bold text-sm mt-0.5">0{i + 1}</span>
+                <p className="text-sm text-text300 leading-relaxed">{item}</p>
+              </div>
             ))}
           </div>
-          <p className="text-xs text-text300">
-            Tip: add <span className="font-mono-tech">GITHUB_TOKEN</span> in backend <span className="font-mono-tech">.env</span> for
-            higher API limits.
-          </p>
+          <div className="rounded-xl border border-gold/20 bg-gold/8 px-4 py-3 text-xs text-gold/90">
+            💡 Tip: Add <span className="font-mono-tech font-bold">GITHUB_TOKEN</span> in backend <span className="font-mono-tech">.env</span> for higher API rate limits.
+          </div>
         </Card>
       </section>
     </main>
