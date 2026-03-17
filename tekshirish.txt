@@ -1,0 +1,55 @@
+GitHub Profile World - Qisqa Tekshirish Qo'llanmasi
+
+1) Birinchi marta ishga tushirish (faqat 1 marta)
+
+Backend:
+cd backend
+python -m venv .venv
+.\.venv\Scripts\activate
+pip install -r requirements.txt
+python manage.py migrate
+
+Frontend:
+cd ..\frontend
+npm install
+
+2) Har safar ishga tushirish
+
+Terminal-1 (Backend):
+cd backend
+.\.venv\Scripts\activate
+python manage.py runserver 127.0.0.1:8000
+
+Terminal-2 (Frontend):
+cd frontend
+npm run dev
+
+3) Ishlayotganini tekshirish
+
+Browser:
+http://127.0.0.1:3000
+
+Terminaldan:
+curl.exe -o NUL -s -w "%{http_code}" http://127.0.0.1:3000/
+curl.exe -i http://127.0.0.1:8000/api/world/generate
+
+Natija:
+- Frontend uchun 200 chiqsa yaxshi.
+- Backend uchun 405 chiqsa yaxshi (endpoint tirik, GET emas POST kutadi).
+
+4) API tez test
+
+PowerShell:
+$gen = Invoke-RestMethod -Uri 'http://127.0.0.1:8000/api/world/generate' -Method POST -ContentType 'application/json' -Body '{"username":"torvalds"}'
+$id = $gen.world_id
+Invoke-RestMethod -Uri ("http://127.0.0.1:8000/api/world/{0}" -f $id) -Method GET
+Invoke-RestMethod -Uri ("http://127.0.0.1:8000/api/world/{0}/share" -f $id) -Method GET
+
+5) To'xtatish
+
+Ikkala terminalda ham: Ctrl + C
+
+Agar osilib qolsa:
+netstat -ano | findstr :3000
+netstat -ano | findstr :8000
+Stop-Process -Id <PID> -Force

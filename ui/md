@@ -1,0 +1,140 @@
+🎨 UI/UX Design Prompt (GitHub Profile World)
+
+Prompt:
+
+Design a modern, visually stunning web UI/UX for a product called “GitHub Profile World.”
+
+This app transforms a developer’s GitHub profile into an interactive visual world.
+The design should feel futuristic, developer-focused, and highly shareable on social media.
+
+Style & Mood
+
+Futuristic developer aesthetic
+
+Clean, minimal but visually powerful
+
+Dark theme primary (with neon accents)
+
+Inspired by: Stripe, Linear, Vercel, GitHub, and modern SaaS landing pages
+
+Slight cyberpunk + 3D feel
+
+Glassmorphism and soft glow effects
+
+Smooth micro-animations and transitions
+
+Layout Sections
+
+1. Hero Section
+
+Large headline: “Turn your GitHub into a living world”
+
+Subtext explaining visualization of repos, commits, and activity
+
+Input field to enter GitHub username
+
+CTA button: “Generate My World”
+
+Background: animated 3D world or floating code elements
+
+2. Live Preview Section
+
+Mock visualization of a GitHub world
+
+Repos as buildings
+
+Stars as glowing particles
+
+Commits as trees or paths
+
+Activity heatmap as terrain
+
+Floating UI cards showing stats
+
+3. Features Section
+
+GitHub data visualization
+
+Real-time updates
+
+Shareable public link
+
+Developer portfolio enhancement
+
+Custom themes
+
+Use modern card-based layout with icons.
+
+4. How It Works
+
+Enter username
+
+Generate world
+
+Explore and share
+
+Simple 3-step horizontal layout.
+
+5. Developer Credibility Section
+
+Built for developers
+
+Works with public GitHub profiles
+
+Privacy safe
+
+Fast generation
+
+6. Footer
+
+Minimal, modern
+
+Links to GitHub repo, demo, and creator
+
+UI Requirements
+
+Fully responsive (desktop first, then mobile)
+
+Smooth hover states
+
+Rounded corners
+
+Modern typography (Inter, Geist, or similar)
+
+Soft shadows and depth
+
+Dark background with gradient highlights
+
+Subtle animations
+
+Technical context (important)
+
+Frontend will be built with:
+
+Next.js
+
+Tailwind
+
+Framer Motion
+
+Possibly Three.js for 3D world
+
+Design must be developer-friendly and realistic to implement.
+
+Output needed
+
+Provide:
+
+Landing page layout
+
+Component structure
+
+UI hierarchy
+
+Color palette
+
+Typography suggestions
+
+Interaction ideas
+
+Make it look like a premium startup product that could go viral among developers.

@@ -36,8 +36,10 @@ class GitHubClient:
             }
         )
         token = settings.GITHUB_TOKEN
+        self._has_auth_header = False
         if token:
             self.session.headers.update({'Authorization': f'Bearer {token}'})
+            self._has_auth_header = True
 
     def parse_username(self, github_url=None, username=None):
         if username:
@@ -59,7 +61,21 @@ class GitHubClient:
         return path[0] if path and path[0] else ''
 
     def _request(self, path, params=None):
-        response = self.session.get(f"{settings.GITHUB_API_BASE}{path}", params=params, timeout=15)
+        url = f"{settings.GITHUB_API_BASE}{path}"
+        try:
+            response = self.session.get(url, params=params, timeout=15)
+        except requests.RequestException as exc:
+            raise GitHubError('GitHub API is temporarily unavailable.') from exc
+
+        # Retry once without token if the configured token is invalid or expired.
+        if response.status_code == 401 and self._has_auth_header:
+            self.session.headers.pop('Authorization', None)
+            self._has_auth_header = False
+            try:
+                response = self.session.get(url, params=params, timeout=15)
+            except requests.RequestException as exc:
+                raise GitHubError('GitHub API is temporarily unavailable.') from exc
+
         if response.status_code == 404:
             raise GitHubNotFoundError('GitHub user or resource not found.')
         if response.status_code == 403 and response.headers.get('X-RateLimit-Remaining') == '0':
